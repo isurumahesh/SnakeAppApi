@@ -4,6 +4,5 @@ itsdangerous==1.1.0
 Jinja2==2.11.2
 numpy>=1.18.1
 opencv-python==4.2.0.32
-tensorflow-cpu==2.1.0
 Pillow==7.0.0
 
