@@ -23,13 +23,13 @@ CORS(app)
 def running():
     return 'Flask is running'
 
-# @app.route('/predict',methods=["POST"])
-# def predict():   
-#     message=request.get_json(force=True) 
-#     name=message["name"]
-#     address=message["address"]
-#     print(address)
-#     return name+address
+@app.route('/predict',methods=["POST"])
+def predict():   
+    message=request.get_json(force=True) 
+    name=message["name"]
+    address=message["address"]
+    person = {'name':name,'address':address}
+    return jsonify(person)
 
 
 # @app.route('/image',methods=["POST"])
