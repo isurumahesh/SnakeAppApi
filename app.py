@@ -1,7 +1,6 @@
 from flask import Flask,jsonify,render_template
 from flask import request
 from flask_cors import CORS
-import cv2
 import numpy as np
 from PIL import Image
 import base64
