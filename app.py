@@ -1,11 +1,11 @@
 from flask import Flask,jsonify,render_template
 from flask import request
 from flask_cors import CORS
-import cv2
-import numpy as np
-from PIL import Image
-import base64
-import io
+# import cv2
+# import numpy as np
+# from PIL import Image
+# import base64
+# import io
 # from tensorflow.keras.preprocessing.image import img_to_array
 # from tensorflow.keras.models import load_model
 
