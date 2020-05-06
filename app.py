@@ -1,4 +1,4 @@
-from flask import Flask,jsonify
+from flask import Flask,jsonify,render_template
 from flask import request
 from flask_cors import CORS
 import cv2
@@ -12,16 +12,16 @@ import io
 app=Flask(__name__)
 CORS(app)
 
-def get_model():
-    global model
-    model=load_model("snake_rgb_model_x_3_activation.h5")
+# def get_model():
+    # global model
+    # model=load_model("snake_rgb_model_x_3_activation.h5")
 
 
 # get_model()
 
-@app.route('/sample')
+@app.route('/')
 def running():
-    return 'Flask is running'
+    return render_template('index.html')
 
 # @app.route('/predict',methods=["POST"])
 # def predict():   
