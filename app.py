@@ -19,9 +19,9 @@ CORS(app)
 
 # get_model()
 
-@app.route('/')
+@app.route('/sample')
 def running():
-    return render_template('index.html')
+    return 'Flask is running'
 
 # @app.route('/predict',methods=["POST"])
 # def predict():   
