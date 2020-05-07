@@ -13,23 +13,14 @@ CORS(app)
 
 def get_model():
     global model
-    model=load_model("snake_mobilenet_10.h5")
+    model=load_model("snake_vgg16_imagesize128.h5")
 
 
 get_model()
 
-@app.route('/sample')
+@app.route('/')
 def running():
-    return 'Flask is running'
-
-# @app.route('/predict',methods=["POST"])
-# def predict():   
-#     message=request.get_json(force=True) 
-#     name=message["name"]
-#     address=message["address"]
-#     person = {'name':name,'address':address}
-#     return jsonify(person)
-
+     return render_template('index.html')
 
 @app.route('/image',methods=["POST"])
 def predict():
@@ -39,16 +30,20 @@ def predict():
        
         decoded=base64.b64decode(encoded)
         image=Image.open(io.BytesIO(decoded))
-        processedImage=preprocessImage(image,target_size=(96,96))
+        processedImage=preprocessImage(image,target_size=(128,128))
         X=processedImage/255 
        
         result=model.predict(X)
         number_to_class=["class-78","class-204","class-508","class-543","class-581","class-697","class-771","class-804","class-872","class-966"]
         index=np.argsort(result[0,:])
-        result='Most likely class:'+str(number_to_class[index[9]])+'--probability:'+str(result[0,index[9]])
+        results=[]     
+        for x in range(9,0,-1):
+            data={"class":str(number_to_class[index[x]]),"probability":str(result[0,index[x]])}
+            results.append(data)
+        
+        print(results)
+        return jsonify(results)
        
-        person = {'result':result}
-        return jsonify(person)
     except Exception as e:
         print(e)
         return "error"
