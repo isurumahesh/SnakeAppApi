@@ -38,7 +38,7 @@ def predict():
         index=np.argsort(result[0,:])
         results=[]     
         for x in range(9,0,-1):
-            data={"imageClass":str(number_to_class[index[x]]),"probability":str(result[0,index[x]])}
+            data={"imageClass":str(number_to_class[index[x]]),"probability":result[0,index[x]]}
             results.append(data)
         
         print(results)
