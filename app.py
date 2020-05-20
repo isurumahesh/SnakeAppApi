@@ -35,10 +35,13 @@ def predict():
        
         result=model.predict(X)
         number_to_class=["class-78","class-204","class-508","class-543","class-581","class-697","class-771","class-804","class-872","class-966"]
+        snake_names=["Timber rattlesnake","Common garter snake","Rough green snake",
+        "Foxsnake","Eastern hognose snake","Common garter snake","Black rat snake","Copperhead","Western diamondback rattlesnake","Eastern racer"]
+
         index=np.argsort(result[0,:])
         results=[]     
         for x in range(9,0,-1):
-            data={"imageClass":str(number_to_class[index[x]]),"probability":str(result[0,index[x]])}
+            data={"imageClass":str(number_to_class[index[x]]),"snakeName":str(snake_names[index[x]]),"probability":str(result[0,index[x]])}
             results.append(data)
         
         print(results)
