@@ -13,7 +13,7 @@ CORS(app)
 
 def get_model():
     global model
-    model=load_model("densenet.h5")
+    model=load_model("dense_model.h5")
 
 
 get_model()
